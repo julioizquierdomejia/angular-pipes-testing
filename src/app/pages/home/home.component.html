@@ -1,0 +1,128 @@
+<div class="w-3/4 mx-auto bg-blue-100 p-8 mt-10">
+    <h1 class="text-bold text-2xl">PIPES</h1>
+    <div class="bg-orange-200 p-4 my-4">
+        <p class="my-2">{{texto1 | uppercase}}</p>
+        <p class="my-2">{{texto1 | lowercase}}</p>
+        <p class="my-2">{{texto1}}</p>
+
+        <h2 class="font-bold">Fechas</h2>
+        <p class="my-2"><span class="font-bold">Fecha original -></span>
+            {{fecha}}
+        </p>
+
+        <p class="my-2"><span class="font-bold">Fecha original -></span>
+            {{fecha | date}}
+        </p>
+
+        <p class="my-2"><span class="font-bold">Fecha original -></span>
+            {{fecha | date:"short"}}
+        </p>
+
+        <p class="my-2"><span class="font-bold">Fecha original -></span>
+            {{fecha | date:"medium"}}
+        </p>
+
+        <p class="my-2"><span class="font-bold">Fecha original -></span>
+            {{fecha | date:"long"}}
+        </p>
+
+        <p class="my-2"><span class="font-bold">Fecha original -></span>
+            {{fecha | date:"fullDate"}}
+        </p>
+
+        <p class="my-2"><span class="font-bold">La hora es -></span>
+            {{fecha | date:"shortTime"}}
+        </p>
+
+        <p class="my-2"><span class="font-bold">La hora es -></span>
+            {{fecha | date:"mm:ss"}}
+        </p>
+
+        <p class="my-2"><span class="font-bold">el porcentaje es {{porcentaje}} -></span>
+            {{porcentaje | percent}}
+        </p>
+
+        <p class="my-2"><span class="font-bold">el porcentaje es {{porcentaje}} -></span>
+            {{porcentaje | percent:'4.3-5'}}
+        </p>
+
+        <p class="my-2"><span class="font-bold">el costo es  {{monto}} -></span>
+            {{monto | currency:'S/. '}}
+        </p>
+
+        <p class="font-bold text-2xl p-6">
+            {{texto1 | pipesTesting}}
+        </p>
+
+        
+        <!--
+        <p class="my-2">{{texto1 | lowercase}}</p>
+        <p class="my-2"><span class="font-bold">Fecha original -></span> {{fecha}}</p>
+        <p class="my-2"><span class="font-bold">Fecha original -></span> {{fecha | date}}</p>
+        <p class="my-2"><span class="font-bold">Fecha original -></span> {{fecha | date :"short"}}</p>
+        <p class="my-2"><span class="font-bold">.889 -> </span>{{.889 | percent}}</p>
+        <p class="my-2">{{345.80 | currency:"EUR"}}</p>
+        <p class="my-2">{{345.80 | currency:"S/. "}}</p>
+        -->
+    </div>
+
+    <!---->
+    <div class="bg-slate-300 p-4 my-4">
+        <div class="grid grid-cols-2 gap-8">
+            
+            <div class="">
+                <input type="text" [(ngModel)]="ciudad" class="py-2 px-3 mr-4 rounded-full">
+                <button class="bg-blue-500 text-white py-2 px-4 rounded my-4" (click)="add(ciudad)">Agregar Pedido</button>
+                <div class="bg-teal-100">
+                    <table class="w-full">
+                        <thead class="border-b">
+                            <tr>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                    <span class="font-bold text-xl">Ciudad</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="border-b" *ngFor="let ciudad of ciudades">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                {{ciudad}}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="">
+                <input type="text" [(ngModel)]="criterio" class="py-2 px-3 mr-4 rounded-full my-4" placeholder="Buscar">
+                
+                <div class="bg-teal-100">
+                    <table class="w-full">
+                        <thead class="border-b">
+                        <tr>
+                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left font-bold">
+                                <span class="font-bold text-xl">Ciudad</span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="border-b" *ngFor="let ciudad of ciudades | filterOrder:criterio">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                {{ciudad}}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+
+        
+
+          
+
+        
+    </div>
+</div>
